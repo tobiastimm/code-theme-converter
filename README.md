@@ -10,6 +10,8 @@ I'm mainly working with Visual Studio Code nowadays and also created some themes
 
 - [x] Create Color Scheme
 - [ ] Create UI Theme
+- [ ] Convert specific syntax
+- [ ] Git Gutter etc.
 - [ ] Tests
 - [ ] CI
 - [ ] Docs
