@@ -11,32 +11,44 @@ program
   .version(require('../package').version)
   .usage('<repo-url> [options]')
   .description('Converts a vscode-theme into the sublime-text theme syntax')
-  .option('-f, --force', 'Overwrite target directory if it exists', true)
-  .option('-d, --directory [name]', 'Overwrite directory containing the themes', 'themes')
+  .option('-S, --save', 'Install theme into Sublime Text', false)
+  .option(
+    '-d, --directory [name]',
+    'Overwrite directory containing the themes',
+    'themes',
+  )
   .parse(process.argv)
 
 if (!process.argv.slice(2).length) {
   program.outputHelp()
 }
 
-if(program.args.length > 1) {
-  console.warn(chalk.yellow('You have provided more than one argument. Only the first argument will be used!'))
+if (program.args.length > 1) {
+  console.warn(
+    chalk.yellow(
+      'You have provided more than one argument. Only the first argument will be used!',
+    ),
+  )
 }
 
-const repoUrl = program.args[0] 
+const repoUrl = program.args[0]
 const options = cleanArgs(program)
 
 if (repoUrl) {
-  convert(repoUrl, options).then(() => {
-    console.log(chalk.green('🎉 Successfully converted the vscode theme for sublime text!'))
-  })
-  .catch((err) => {
-    console.error(chalk.red(err))
-  })
+  convert(repoUrl, options)
+    .then(() => {
+      console.log(
+        chalk.green(
+          '🎉 Successfully converted the vscode theme for sublime text!',
+        ),
+      )
+    })
+    .catch(err => {
+      console.error(chalk.red(err))
+    })
 }
 
-
-function cleanArgs (cmd) {
+function cleanArgs(cmd) {
   const args = {}
   cmd.options.forEach(o => {
     const key = o.long.replace(/^--/, '')

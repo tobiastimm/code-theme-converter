@@ -2,7 +2,15 @@
 
 > Convert any Visual Studio Code Theme to Sublime Text 3
 
-WIP
+I'm mainly working with Visual Studio Code nowadays and also created some themes. There are still some moments, where I prefer to work with Sublime Text and I was always annoyed that I haven't ported my themes to Sublime. So I've created this package to easily convert my themes for Sublime Text.
+
+## To Do
+
+- [x] Create Color Scheme
+- [ ] Create UI Theme
+- [ ] Tests
+- [ ] CI
+- [ ] Docs
 
 ## Install
 
@@ -20,6 +28,7 @@ vsc2subl <repo-url> [options]
 
 ### Options:
 
+- `-S`, `--save`: Install theme into Sublime Text (default: false)
 - `-d`, `--directory`: Overwrite directory containing the themes (default: "themes")
 - `-V`, `--version`: Output the version number
 - `-h`, `--help`: Output usage information

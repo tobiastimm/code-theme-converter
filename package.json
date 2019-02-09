@@ -30,7 +30,9 @@
     "json5": "^2.1.0",
     "minimist": "^1.2.0",
     "plist": "^3.0.1",
-    "slash": "^2.0.0"
+    "rimraf": "^2.6.3",
+    "slash": "^2.0.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "eslint": "^5.13.0",
