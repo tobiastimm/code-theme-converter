@@ -10,3 +10,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+_esy
+lib/bs
+.bsb.lock
+.merlin

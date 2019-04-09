@@ -484,6 +484,15 @@ browser-resolve@^1.11.3:
   dependencies:
     resolve "1.1.7"
 
+bs-node@reasonml-community/bs-node:
+  version "0.0.1"
+  resolved "https://codeload.github.com/reasonml-community/bs-node/tar.gz/20ef6d2d7c00e923aba33b0629ca5623a4460712"
+
+bs-platform@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.0.tgz#f9fded818bafc3891aeb85eb4e0d95b8d8f8b4d7"
+  integrity sha512-zxLobdIaf/r7go47hOgxcd6C0ANh7MYMEtZNb9Al7JdoekzFZI50F4GpZpP8kMh9Z+M5PoPE1WuryT4S8mT8Kg==
+
 bser@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/bser/-/bser-2.0.0.tgz#9ac78d3ed5d915804fd87acb158bc797147a1719"

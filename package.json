@@ -1,20 +1,26 @@
 {
-  "name": "vscode-theme-to-sublime-text",
+  "name": "editor-theme-converter",
   "version": "0.0.1",
-  "description": "Converts a vscode theme to a sublime text theme",
+  "description": "Convert any editor theme with ease!",
   "bin": {
     "vsc2subl": "bin/vsc2subl.js"
   },
+  "scripts": {
+    "build": "bsb -make-world",
+    "start": "bsb -make-world -w",
+    "clean": "bsb -clean-world"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tobiastimm/vscode-theme-to-sublime-text.git"
+    "url": "https://github.com/tobiastimm/theme-converter.git"
   },
   "bugs": {
-    "url": "https://github.com/tobiastimm/vscode-theme-to-sublime-text/issues"
+    "url": "https://github.com/tobiastimm/theme-converter/issues"
   },
   "keywords": [
     "vscode",
     "sublime",
+    "idea",
     "theme",
     "convert"
   ],
@@ -35,6 +41,8 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "bs-node": "reasonml-community/bs-node",
+    "bs-platform": "^5.0.0",
     "eslint": "^5.13.0",
     "eslint-plugin-node": "^8.0.1",
     "inquirer": "^6.2.2",
