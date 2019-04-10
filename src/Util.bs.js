@@ -23,9 +23,8 @@ function getSublimeTextPackageDir(param) {
   }
 }
 
-function createTempDir($staropt$star, param) {
-  var dirName = $staropt$star !== undefined ? $staropt$star : "theme-converter";
-  var dir = Path.join(Os.tmpDir(), dirName);
+function createTempDir(param) {
+  var dir = Path.join(Os.tmpDir(), "theme-converter");
   return Fs.remove(dir).then((function (param) {
                   return Promise.resolve(dir);
                 })).catch((function (err) {

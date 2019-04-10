@@ -8,7 +8,8 @@
   "scripts": {
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world"
+    "clean": "bsb -clean-world",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "@glennsl/bs-jest": "^0.4.8",
     "bs-node": "reasonml-community/bs-node",
     "bs-platform": "^5.0.0",
     "eslint": "^5.13.0",

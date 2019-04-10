@@ -16,12 +16,12 @@ let getSublimeTextPackageDir = () => {
   };
 };
 
-let createTempDir = (~dirName="theme-converter", ()) => {
-  let dir = Node.Path.join2(tmpDir(), dirName);
+let createTempDir = () => {
+  let dir = Node.Path.join2(tmpDir(), "theme-converter");
   remove(dir)
   |> Js.Promise.then_(() => Js.Promise.resolve(dir))
   |> Js.Promise.catch(err => {
-    Js.log2("Couldn't remove directory!", err);
-    Js.Promise.reject(Failure("error"));
-  });
+       Js.log2("Couldn't remove directory!", err);
+       Js.Promise.reject(Failure("error"));
+     });
 };
