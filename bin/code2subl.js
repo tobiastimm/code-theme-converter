@@ -4,7 +4,7 @@ const chalk = require('chalk')
 
 const program = require('commander')
 
-const convert = require('../lib/convert')
+const convert = require('../lib/sublime/convert')
 
 program
   .version(require('../package').version)
