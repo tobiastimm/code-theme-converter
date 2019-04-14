@@ -7,6 +7,19 @@ type userInfo = {. "username": string};
 
 let getUsername = () => userInfo()##username;
 
+let rec drop = (~count, theList: list('a)) =>
+  switch (theList) {
+  | [] => []
+  | l when count <= 0 => l
+  | [_, ...tail] => drop(~count=count - 1, tail)
+  };
+
+let rec len = (myList: list('a)) =>
+  switch (myList) {
+  | [] => 0
+  | [_, ...tail] => 1 + len(tail)
+  };
+
 let getSublimeTextPackageDir = () => {
   let username = getUsername();
   switch (platform()) {

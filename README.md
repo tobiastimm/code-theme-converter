@@ -4,7 +4,7 @@
 
 > Convert any editor theme with ease!
 
-**WIP! I'm trying to learn Reason, so I will rewrite this module**
+**Reason rewrite is a WIP. Will try to finish the features in JS first**
 
 I'm mainly working with Visual Studio Code nowadays and also created some themes. There are still some moments, where I prefer to work with other editors like Sublime Text or WebStorm. It bugs me that these editors don't have my vscode themes, so I've created this package to easily convert my themes.
 
@@ -61,7 +61,7 @@ npm install --global --save editor-theme-converter
 ### vscode-to-sublime-text
 
 ```sh
-vsc2subl <repo> [options]
+code2subl <repo> [options]
 ```
 
 #### Options

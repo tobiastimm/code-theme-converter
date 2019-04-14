@@ -10,6 +10,32 @@ function getUsername(param) {
   return Os.userInfo().username;
 }
 
+function drop(_count, _theList) {
+  while(true) {
+    var theList = _theList;
+    var count = _count;
+    if (theList) {
+      if (count <= 0) {
+        return theList;
+      } else {
+        _theList = theList[1];
+        _count = count - 1 | 0;
+        continue ;
+      }
+    } else {
+      return /* [] */0;
+    }
+  };
+}
+
+function len(myList) {
+  if (myList) {
+    return 1 + len(myList[1]) | 0;
+  } else {
+    return 0;
+  }
+}
+
 function getSublimeTextPackageDir(param) {
   var username = Os.userInfo().username;
   var match = Os.platform();
@@ -37,6 +63,8 @@ function createTempDir(param) {
 }
 
 exports.getUsername = getUsername;
+exports.drop = drop;
+exports.len = len;
 exports.getSublimeTextPackageDir = getSublimeTextPackageDir;
 exports.createTempDir = createTempDir;
 /* fs Not a pure module */

@@ -3,7 +3,6 @@
 const chalk = require('chalk')
 
 const program = require('commander')
-const minimist = require('minimist')
 
 const convert = require('../lib/convert')
 

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Convert any editor theme with ease!",
   "bin": {
-    "vsc2subl": "bin/vsc2subl.js"
+    "code2subl": "bin/code2subl.js"
   },
   "scripts": {
     "build": "bsb -make-world",
