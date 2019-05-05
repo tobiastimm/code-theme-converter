@@ -1,9 +1,10 @@
 {
-  "name": "editor-theme-converter",
+  "name": "code-theme-converter",
   "version": "0.0.1",
-  "description": "Convert any editor theme with ease!",
+  "description": "Convert any vscode theme with ease!",
   "bin": {
-    "code2subl": "bin/code2subl.js"
+    "code2subl": "bin/code2subl.js",
+    "code2idea": "bin/code2idea.js"
   },
   "scripts": {
     "build": "bsb -make-world",
@@ -13,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tobiastimm/theme-converter.git"
+    "url": "https://github.com/tobiastimm/code-theme-converter.git"
   },
   "bugs": {
-    "url": "https://github.com/tobiastimm/theme-converter/issues"
+    "url": "https://github.com/tobiastimm/code-theme-converter/issues"
   },
   "keywords": [
     "vscode",

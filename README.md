@@ -1,8 +1,8 @@
-# editor-theme-converter
+# code-theme-converter
 
-[![downloads](http://img.shields.io/npm/dm/vscode-theme-to-sublime-text.svg?style=flat)](https://www.npmjs.org/package/vscode-theme-to-sublime-text) [![npm version](https://badge.fury.io/js/vscode-theme-to-sublime-text.svg)](https://www.npmjs.com/package/vscode-theme-to-sublime-text)
+[![downloads](http://img.shields.io/npm/dm/code-theme-converter.svg?style=flat)](https://www.npmjs.org/package/code-theme-converter) [![npm version](https://badge.fury.io/js/code-theme-converter.svg)](https://www.npmjs.com/package/code-theme-converter)
 
-> Convert any editor theme with ease!
+> Convert any vscode theme with ease!
 
 **Reason rewrite is a WIP. Will try to finish the features in JS first**
 
@@ -10,7 +10,7 @@ I'm mainly working with Visual Studio Code nowadays and also created some themes
 
 ## To Do
 
-### vscode-to-sublime-text
+### code2subl
 
 - [x] Create Color Scheme
 - [ ] Create UI Theme
@@ -20,26 +20,7 @@ I'm mainly working with Visual Studio Code nowadays and also created some themes
 - [ ] CI
 - [ ] Docs
 
-### vscode-to-idea
-
-- [ ] Create Color Scheme
-- [ ] Create UI Theme
-- [ ] Convert specific syntax
-- [ ] Tests
-- [ ] CI
-- [ ] Docs
-
-### sublime-text-to-vscode
-
-- [ ] Create Color Scheme
-- [ ] Create UI Theme
-- [ ] Convert specific syntax
-- [ ] Git Gutter etc.
-- [ ] Tests
-- [ ] CI
-- [ ] Docs
-
-### idea-to-vscode
+### code2idea
 
 - [ ] Create Color Scheme
 - [ ] Create UI Theme
@@ -53,12 +34,12 @@ I'm mainly working with Visual Studio Code nowadays and also created some themes
 Install using `npm`
 
 ```sh
-npm install --global --save editor-theme-converter
+npm install --global --save code-theme-converter
 ```
 
 ## Usage
 
-### vscode-to-sublime-text
+### code2subl
 
 ```sh
 code2subl <repo> [options]
@@ -74,7 +55,25 @@ code2subl <repo> [options]
 #### Example
 
 ```sh
-vsc2subl https://github.com/tobiastimm/raiju.git
+code2subl https://github.com/tobiastimm/raiju.git
+```
+
+### code2idea
+
+```sh
+code2idea <repo> [options]
+```
+
+#### Options
+
+- `-d`, `--directory`: Overwrite directory containing the themes (default: "themes")
+- `-V`, `--version`: Output the version number
+- `-h`, `--help`: Output usage information
+
+#### Example
+
+```sh
+code2idea https://github.com/tobiastimm/raiju.git
 ```
 
 ## License
