@@ -8,6 +8,8 @@
 
 I'm mainly working with Visual Studio Code nowadays and also created some themes. There are still some moments, where I prefer to work with other editors like Sublime Text or WebStorm. It bugs me that these editors don't have my vscode themes, so I've created this package to easily convert my themes.
 
+**Please use this as a starting point for your theme in Sublime or IDEA. 100% perfect conversion of every theme is kinda hard 😅**
+
 ## To Do
 
 ### code2subl
