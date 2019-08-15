@@ -4,7 +4,7 @@
 
 > Convert any vscode theme with ease!
 
-**Reason rewrite is a WIP. Will try to finish the features in JS first**
+** This project is very WIP. I will try to finish it within the next weeks. If you wanna help, please reach out to me **
 
 I'm mainly working with Visual Studio Code nowadays and also created some themes. There are still some moments, where I prefer to work with other editors like Sublime Text or WebStorm. It bugs me that these editors don't have my vscode themes, so I've created this package to easily convert my themes.
 
