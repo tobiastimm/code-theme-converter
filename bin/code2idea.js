@@ -13,7 +13,7 @@ program
   .option(
     '-d, --directory [name]',
     'Overwrite directory containing the themes',
-    'themes',
+    'themes'
   )
   .parse(process.argv)
 
@@ -24,8 +24,8 @@ if (!process.argv.slice(2).length) {
 if (program.args.length > 1) {
   console.warn(
     chalk.yellow(
-      'You have provided more than one argument. Only the first argument will be used!',
-    ),
+      'You have provided more than one argument. Only the first argument will be used!'
+    )
   )
 }
 
@@ -37,8 +37,8 @@ if (repoUrl) {
     .then(() => {
       console.log(
         chalk.green(
-          '🎉 Successfully converted the vscode theme for IntelliJ IDEA!',
-        ),
+          '🎉 Successfully converted the vscode theme for IntelliJ IDEA!'
+        )
       )
     })
     .catch(err => {
@@ -46,7 +46,7 @@ if (repoUrl) {
     })
 }
 
-function cleanArgs(cmd) {
+function cleanArgs (cmd) {
   const args = {}
   cmd.options.forEach(o => {
     const key = o.long.replace(/^--/, '')

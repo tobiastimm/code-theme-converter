@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "strict": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "noUnusedLocals": true,
+    "noFallthroughCasesInSwitch": true,
+    "typeRoots": ["./node_modules/@types"],
+    "lib": ["dom", "es2020"],
+    "baseUrl": "."
+  },
+  "exclude": ["node_modules", "__tests__"]
+}
