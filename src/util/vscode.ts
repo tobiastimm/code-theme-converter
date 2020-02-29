@@ -8,7 +8,7 @@ export interface EditorColors {
 
 export interface TokenColor {
   name?: string
-  scope: string | string[]
+  scope?: string | string[]
   settings?: {
     fontStyle?: 'italic' | 'normal' | 'bold' | 'bold italic'
     foreground?: string
@@ -50,7 +50,7 @@ export interface CodeThemePackage {
 }
 
 export function findEditorColor(
-  colors: EditorColors,
+  colors: EditorColors = {},
   ...fieldNames: string[]
 ): string {
   for (const field of fieldNames) {
@@ -63,8 +63,8 @@ export function findEditorColor(
 }
 
 export function findTokenColorForScope(
-  tokenColors: TokenColor[],
-  scope: string
+  tokenColors: TokenColor[] = [],
+  scope: string = ''
 ): TokenColor | null {
   for (const token of tokenColors) {
     const tokenScope = token.scope
@@ -90,7 +90,8 @@ export async function readCodeTheme(
 ): Promise<CodeTheme> {
   return new Promise((resolve, reject) => {
     fs.readFile(path.join(themeDir, theme), (err, data) => {
-      if (err.code === '0') {
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+      if (!err) {
         const vscodeTheme: CodeTheme = json5.parse(data.toString('utf8'))
         resolve(vscodeTheme)
       }
@@ -104,7 +105,8 @@ export async function readCodeThemePackage(
 ): Promise<CodeThemePackage> {
   return new Promise((resolve, reject) => {
     fs.readFile(path.join(dir, 'package.json'), function(err, data) {
-      if (err.code === '0') {
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+      if (!err) {
         const packageJson: CodeThemePackage = JSON.parse(data.toString('utf8'))
         resolve(packageJson)
       }

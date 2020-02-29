@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import { createTempDir } from '../fs'
 
-describe('util', () => {
+describe('util/fs', () => {
   describe('createTempDir', () => {
     it('should be defined', () => {
       expect(createTempDir).toBeDefined()
