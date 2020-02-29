@@ -33,11 +33,7 @@ I'm mainly working with Visual Studio Code nowadays and also created some themes
 
 ## Install
 
-Install using `npm`
-
-```sh
-npm install --global --save code-theme-converter
-```
+At the moment the package needs to be build and linked manually.
 
 ## Usage
 
