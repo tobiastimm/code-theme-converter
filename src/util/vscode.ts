@@ -14,7 +14,6 @@ export interface TokenColor {
     foreground?: string
     background?: string
   }
-  tokenColors?: TokenColor[]
 }
 
 export interface CodeTheme {
@@ -23,6 +22,7 @@ export interface CodeTheme {
   maintainers: string[]
   type: 'light' | 'dark'
   colors: EditorColors
+  tokenColors: TokenColor[]
 }
 
 export interface CodeThemeEntry {
@@ -46,6 +46,11 @@ export interface CodeThemePackage {
   categories: string[]
   contributes: {
     themes: CodeThemeEntry[]
+  }
+  __metadata: {
+    id: string
+    publisherDisplayName: string
+    publisherId: string
   }
 }
 
