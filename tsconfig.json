@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES6",
     "strict": true,
     "module": "commonjs",
     "moduleResolution": "node",
@@ -13,8 +13,8 @@
     "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": ["./node_modules/@types"],
-    "lib": ["dom", "es2020"],
-    "baseUrl": "."
+    "baseUrl": ".",
+    "outDir": "dist"
   },
   "exclude": ["node_modules", "__tests__"]
 }
