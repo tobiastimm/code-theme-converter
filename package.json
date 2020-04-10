@@ -6,8 +6,13 @@
     "code2subl": "bin/code2subl.js",
     "code2idea": "bin/code2idea.js"
   },
+  "files": [
+    "bin",
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
+    "predeploy": "yarn build",
     "test": "jest",
     "lint": "eslint src/**/*.ts"
   },
