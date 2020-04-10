@@ -1,11 +1,12 @@
 import chalk from 'chalk'
 
-import program, { Command } from 'commander'
+import commander, { createCommand } from 'commander'
 
 import { convertToSublime } from '../sublime/convert'
+const program = createCommand()
 
 program
-  .version(require('../package').version)
+  .version(require('../../package').version)
   .usage('<repo-url> [options]')
   .description('Converts a vscode-theme into the sublime-text theme syntax')
   .option('-S, --save', 'Install theme into Sublime Text', false)
@@ -31,7 +32,7 @@ if (program.args.length > 1) {
 const repoUrl: string = program.args[0]
 const options = cleanArgs(program)
 
-if (repoUrl !== '') {
+if (repoUrl != '') {
   convertToSublime(repoUrl, options)
     .then(() => {
       console.log(
@@ -45,18 +46,13 @@ if (repoUrl !== '') {
     })
 }
 
-interface CommandOptions {
-  directory?: string
-  save?: boolean
-}
-
-function cleanArgs(cmd: Command): CommandOptions {
+function cleanArgs(cmd: commander.Command): CommandOptions {
   const args: CommandOptions = {}
   cmd.options.forEach((option: any) => {
     const key = option.long.replace(/^--/, '')
     // if an option is not present and Command has a method with the same name
     // it should not be copied
-    if (typeof cmd[key] !== 'function' && typeof cmd[key] !== 'undefined') {
+    if (typeof cmd[key] != 'function' && typeof cmd[key] != 'undefined') {
       args[key] = cmd[key]
     }
   })

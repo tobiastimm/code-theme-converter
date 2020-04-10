@@ -39,6 +39,12 @@ Install using `npm`
 npm install --global --save code-theme-converter
 ```
 
+Install using `yarn`
+
+```sh
+yarn global add code-theme-converter
+```
+
 ## Usage
 
 ### code2subl
@@ -60,7 +66,7 @@ code2subl <repo> [options]
 code2subl https://github.com/tobiastimm/raiju.git
 ```
 
-### code2idea
+### code2idea (Not working atm)
 
 ```sh
 code2idea <repo> [options]

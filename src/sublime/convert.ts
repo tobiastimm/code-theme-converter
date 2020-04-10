@@ -36,7 +36,9 @@ export async function convertToSublime(
         .then(vscodeTheme => {
           console.log(chalk.yellow(`Converting ${vscodeTheme.name}`))
           const sublimeThemeDir = path.join(
-            options.save != null ? getSublimeTextPackageDir() : process.cwd(),
+            options.save != null && options.save
+              ? getSublimeTextPackageDir()
+              : process.cwd(),
             vscodeTheme.name
           )
           if (fs.existsSync(sublimeThemeDir)) {

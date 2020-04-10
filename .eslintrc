@@ -4,6 +4,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "@typescript-eslint/space-before-function-paren": 0
+    "@typescript-eslint/space-before-function-paren": 0,
+    "eqeqeq": 0
   }
 }
