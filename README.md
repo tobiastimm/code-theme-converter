@@ -35,6 +35,12 @@ I'm mainly working with Visual Studio Code nowadays and also created some themes
 
 At the moment the package needs to be build and linked manually.
 
+Install using `yarn`
+
+```sh
+yarn global add code-theme-converter
+```
+
 ## Usage
 
 ### code2subl
@@ -56,7 +62,7 @@ code2subl <repo> [options]
 code2subl https://github.com/tobiastimm/raiju.git
 ```
 
-### code2idea
+### code2idea (Not working atm)
 
 ```sh
 code2idea <repo> [options]
