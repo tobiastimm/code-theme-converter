@@ -33,7 +33,11 @@ I'm mainly working with Visual Studio Code nowadays and also created some themes
 
 ## Install
 
-At the moment the package needs to be build and linked manually.
+Install using `npm`
+
+```sh
+npm i -g code-theme-converter
+```
 
 Install using `yarn`
 

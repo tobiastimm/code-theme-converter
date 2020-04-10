@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "predeploy": "yarn build",
+    "prepublishOnly": "yarn build",
     "test": "jest",
     "lint": "eslint src/**/*.ts"
   },
