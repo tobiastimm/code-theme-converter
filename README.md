@@ -1,6 +1,6 @@
 # code-theme-converter
 
-[![downloads](http://img.shields.io/npm/dm/code-theme-converter.svg?style=flat)](https://www.npmjs.org/package/code-theme-converter) [![npm version](https://badge.fury.io/js/code-theme-converter.svg)](https://www.npmjs.com/package/code-theme-converter)
+[![CircleCI](https://circleci.com/gh/tobiastimm/code-theme-converter.svg?style=svg)](https://circleci.com/gh/tobiastimm/code-theme-converter)[![downloads](http://img.shields.io/npm/dm/code-theme-converter.svg?style=flat)](https://www.npmjs.org/package/code-theme-converter) [![npm version](https://badge.fury.io/js/code-theme-converter.svg)](https://www.npmjs.com/package/code-theme-converter)
 
 > Convert any vscode theme with ease!
 
