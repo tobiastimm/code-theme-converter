@@ -94,16 +94,19 @@ describe('colorScheme', () => {
             <key>settings</key>
             <array>
               <dict>
-                <key>background</key>
-                <string>#171D2B</string>
-                <key>caret</key>
-                <string>#ffffffc9</string>
-                <key>foreground</key>
-                <string>#e6e6e6</string>
-                <key>lineHighlight</key>
-                <string>#67769630</string>
-                <key>selection</key>
-                <string>#67769660</string>
+                <key>settings</key>
+                <dict>
+                  <key>background</key>
+                  <string>#171D2B</string>
+                  <key>caret</key>
+                  <string>#ffffffc9</string>
+                  <key>foreground</key>
+                  <string>#e6e6e6</string>
+                  <key>lineHighlight</key>
+                  <string>#67769630</string>
+                  <key>selection</key>
+                  <string>#67769660</string>
+                </dict>
               </dict>
               <dict>
                 <key>name</key>
@@ -173,19 +176,7 @@ describe('colorScheme', () => {
               </dict>
               <dict>
                 <key>scope</key>
-                <array>
-                  <string>punctuation.definition</string>
-                  <string>punctuation.definition.annotation</string>
-                  <string>punctuation.definition.heading</string>
-                  <string>punctuation.definition.list_item</string>
-                  <string>punctuation.definition.thematic-break</string>
-                  <string>punctuation.separator</string>
-                  <string>punctuation.terminator</string>
-                  <string>punctuation.accessor</string>
-                  <string>punctuation.section</string>
-                  <string>punctuation.support.type.property-name.begin</string>
-                  <string>punctuation.support.type.property-name.end</string>
-                </array>
+                <string>punctuation.definition, punctuation.definition.annotation, punctuation.definition.heading, punctuation.definition.list_item, punctuation.definition.thematic-break, punctuation.separator, punctuation.terminator, punctuation.accessor, punctuation.section, punctuation.support.type.property-name.begin, punctuation.support.type.property-name.end</string>
                 <key>settings</key>
                 <dict>
                   <key>foreground</key>
@@ -194,9 +185,7 @@ describe('colorScheme', () => {
               </dict>
               <dict>
                 <key>scope</key>
-                <array>
-                  <string>punctuation.definition.blockquote</string>
-                </array>
+                <string>punctuation.definition.blockquote</string>
                 <key>settings</key>
                 <dict>
                   <key>foreground</key>
@@ -207,9 +196,7 @@ describe('colorScheme', () => {
               </dict>
               <dict>
                 <key>scope</key>
-                <array>
-                  <string>meta.separator.thematic-break</string>
-                </array>
+                <string>meta.separator.thematic-break</string>
                 <key>settings</key>
                 <dict>
                   <key>background</key>
@@ -218,10 +205,7 @@ describe('colorScheme', () => {
               </dict>
               <dict>
                 <key>scope</key>
-                <array>
-                  <string>string</string>
-                  <string>markup.inline.raw.string</string>
-                </array>
+                <string>string, markup.inline.raw.string</string>
                 <key>settings</key>
                 <dict>
                   <key>foreground</key>

@@ -16,21 +16,23 @@ export function convertToSublimeColorScheme(
     name: vscodeTheme.name,
     settings: [
       {
-        background: findEditorColor(colors, 'editor.background'),
-        caret: findEditorColor(
-          colors,
-          'editorCursor.background',
-          'editor.foreground'
-        ),
-        foreground: findEditorColor(colors, 'editor.foreground'),
-        lineHighlight: findEditorColor(
-          colors,
-          'editor.lineHighlightBackground'
-        ),
-        selection: findEditorColor(colors, 'editor.selectionBackground')
+        settings: {
+          background: findEditorColor(colors, 'editor.background'),
+          caret: findEditorColor(
+            colors,
+            'editorCursor.background',
+            'editor.foreground'
+          ),
+          foreground: findEditorColor(colors, 'editor.foreground'),
+          lineHighlight: findEditorColor(
+            colors,
+            'editor.lineHighlightBackground'
+          ),
+          selection: findEditorColor(colors, 'editor.selectionBackground')
+        }
       },
       ...generateGitGutterConfig(colors),
-      ...tokenColors
+      ...tokenColors.map(convertTokenColorScopeForSublime)
     ] as PlistArray,
     uuid: id ?? uuid.v4(),
     colorSpaceName: 'sRGB',
@@ -97,4 +99,11 @@ function generateGitGutterConfig(colors: EditorColors): GitGutterConfig {
       }
     }
   ]
+}
+
+function convertTokenColorScopeForSublime(tokenColor: TokenColor): TokenColor {
+  return {
+    ...tokenColor,
+    scope: Array.isArray(tokenColor.scope) ? tokenColor.scope.join(', ') : tokenColor.scope
+  }
 }

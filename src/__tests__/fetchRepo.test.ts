@@ -9,7 +9,7 @@ jest.mock('../util/fs', () => ({
 
 jest.mock('download-git-repo', () => ({
   __esModule: true,
-  default: jest.fn((repository, destination, options, callback) => callback())
+  default: jest.fn((_repository, _destination, _options, callback) => callback())
 }))
 
 describe('fetchRepo', () => {
