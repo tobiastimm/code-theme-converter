@@ -54,42 +54,40 @@ export interface CodeThemePackage {
   }
 }
 
-export function findEditorColor(
-  colors: EditorColors = {},
-  ...fieldNames: string[]
-): string {
-  for (const field of fieldNames) {
-    if (Object.prototype.hasOwnProperty.call(colors, field)) {
-      return colors[field]
+export function findEditorColor (colors: EditorColors = {}) {
+  return function findEditorColorForField (...fieldNames: string[]) {
+    for (const field of fieldNames) {
+      if (Object.prototype.hasOwnProperty.call(colors, field)) {
+        return colors[field]
+      }
+      continue
     }
-    continue
+    return ''
   }
-  return ''
 }
 
-export function findTokenColorForScope(
-  tokenColors: TokenColor[] = [],
-  scope: string = ''
-): TokenColor | null {
-  for (const token of tokenColors) {
-    const tokenScope = token.scope
-    let isDefined = false
-    if (typeof tokenScope === 'string') {
-      isDefined = tokenScope.includes(scope)
-    } else if (Array.isArray(tokenScope)) {
-      isDefined =
-        tokenScope.filter(element => element.includes(scope)).length > 0
-    } else {
-      return null
+export function findTokenColorForScope (tokenColors: TokenColor[] = []) {
+  return function findTokenColor (scope: string = ''): TokenColor | null {
+    for (const token of tokenColors) {
+      const tokenScope = token.scope
+      let isDefined = false
+      if (typeof tokenScope === 'string') {
+        isDefined = tokenScope.includes(scope)
+      } else if (Array.isArray(tokenScope)) {
+        isDefined =
+          tokenScope.filter(element => element.includes(scope)).length > 0
+      } else {
+        return null
+      }
+      if (isDefined) {
+        return token
+      }
     }
-    if (isDefined) {
-      return token
-    }
+    return null
   }
-  return null
 }
 
-export async function readCodeTheme(
+export async function readCodeTheme (
   themeDir: string,
   theme: string
 ): Promise<CodeTheme> {
@@ -105,11 +103,11 @@ export async function readCodeTheme(
   })
 }
 
-export async function readCodeThemePackage(
+export async function readCodeThemePackage (
   dir: string
 ): Promise<CodeThemePackage> {
   return new Promise((resolve, reject) => {
-    fs.readFile(path.join(dir, 'package.json'), function(err, data) {
+    fs.readFile(path.join(dir, 'package.json'), function (err, data) {
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!err) {
         const packageJson: CodeThemePackage = JSON.parse(data.toString('utf8'))

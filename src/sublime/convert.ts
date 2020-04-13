@@ -8,7 +8,7 @@ import { convertToSublimeColorScheme } from './colorScheme'
 import { getSublimeTextPackageDir } from '../util/sublime'
 import { readCodeTheme } from '../util/vscode'
 
-export async function convertToSublime(
+export async function convertToSublime (
   vscodeThemeRepoUrl: string,
   options: {
     directory?: string

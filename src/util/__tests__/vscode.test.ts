@@ -21,16 +21,16 @@ describe('util/vscode', () => {
       }
 
       expect(
-        findEditorColor(mockEditorColors, 'activityBarBadge.background')
+        findEditorColor(mockEditorColors)('activityBarBadge.background')
       ).toEqual(mockEditorColors['activityBarBadge.background'])
     })
 
     it('should return an empty string, if the color is not defined', () => {
-      expect(findEditorColor({}, 'activityBar')).toEqual('')
+      expect(findEditorColor({})('activityBar')).toEqual('')
     })
 
     it('should return an empty string, if the function is executed without parameters', () => {
-      expect(findEditorColor()).toEqual('')
+      expect(findEditorColor()()).toEqual('')
     })
   })
 
@@ -68,7 +68,7 @@ describe('util/vscode', () => {
         }
       ]
       expect(
-        findTokenColorForScope(mockTokenColors, 'punctuation.section')
+        findTokenColorForScope(mockTokenColors)('punctuation.section')
       ).toEqual(mockTokenColors[1])
     })
 
@@ -91,22 +91,19 @@ describe('util/vscode', () => {
 
     it('should return null, if there is a TokenColor without a scope', () => {
       expect(
-        findTokenColorForScope(
-          [
-            {
-              settings: {
-                foreground: '#6F7899'
-              },
-              name: 'Comments'
-            }
-          ],
-          'activityBar'
-        )
+        findTokenColorForScope([
+          {
+            settings: {
+              foreground: '#6F7899'
+            },
+            name: 'Comments'
+          }
+        ])('activityBar')
       ).toEqual(null)
     })
 
     it('should return null, if the function is called without parameters', () => {
-      expect(findTokenColorForScope()).toEqual(null)
+      expect(findTokenColorForScope()()).toEqual(null)
     })
   })
 

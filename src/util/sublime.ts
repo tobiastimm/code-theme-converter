@@ -1,10 +1,10 @@
 import os from 'os'
 
-function getUsername(): string {
+function getUsername (): string {
   return os.userInfo().username
 }
 
-export function getSublimeTextPackageDir(): string {
+export function getSublimeTextPackageDir (): string {
   const username = getUsername()
   switch (os.platform()) {
     case 'win32':
