@@ -1,6 +1,7 @@
 import fs from 'fs-extra'
 import path from 'path'
 import json5 from 'json5'
+import { curryN } from 'ramda'
 
 export interface EditorColors {
   [key: string]: string
@@ -54,8 +55,14 @@ export interface CodeThemePackage {
   }
 }
 
-export function findEditorColor (colors: EditorColors = {}) {
-  return function findEditorColorForField (...fieldNames: string[]) {
+export const findEditorColor: (
+  colors: EditorColors
+) => (fieldNames: string[]) => string = curryN(
+  2,
+  function findEditorColorForField (
+    colors: EditorColors = {},
+    fieldNames: string[] = []
+  ) {
     for (const field of fieldNames) {
       if (Object.prototype.hasOwnProperty.call(colors, field)) {
         return colors[field]
@@ -64,28 +71,31 @@ export function findEditorColor (colors: EditorColors = {}) {
     }
     return ''
   }
-}
+)
 
-export function findTokenColorForScope (tokenColors: TokenColor[] = []) {
-  return function findTokenColor (scope: string = ''): TokenColor | null {
-    for (const token of tokenColors) {
-      const tokenScope = token.scope
-      let isDefined = false
-      if (typeof tokenScope === 'string') {
-        isDefined = tokenScope.includes(scope)
-      } else if (Array.isArray(tokenScope)) {
-        isDefined =
-          tokenScope.filter(element => element.includes(scope)).length > 0
-      } else {
-        return null
-      }
-      if (isDefined) {
-        return token
-      }
+export const findTokenColorForScope: (
+  tokenColors: TokenColor[]
+) => (scope: string) => string = curryN(2, function findTokenColorForScope (
+  tokenColors: TokenColor[] = [],
+  scope: string = ''
+): TokenColor | null {
+  for (const token of tokenColors) {
+    const tokenScope = token.scope
+    let isDefined = false
+    if (typeof tokenScope === 'string') {
+      isDefined = tokenScope.includes(scope)
+    } else if (Array.isArray(tokenScope)) {
+      isDefined =
+        tokenScope.filter(element => element.includes(scope)).length > 0
+    } else {
+      return null
     }
-    return null
+    if (isDefined) {
+      return token
+    }
   }
-}
+  return null
+})
 
 export async function readCodeTheme (
   themeDir: string,
