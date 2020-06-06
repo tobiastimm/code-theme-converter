@@ -11,7 +11,7 @@ export function convertToSublimeColorScheme(
   vscodeTheme: CodeTheme,
   id?: string
 ): any {
-  const { name, author, type, colors, tokenColors } = vscodeTheme
+  const { name, author = '', type, colors, tokenColors } = vscodeTheme
   const sublimePlist: PlistObject = {
     name: vscodeTheme.name,
     settings: [
@@ -102,8 +102,14 @@ function generateGitGutterConfig(colors: EditorColors): GitGutterConfig {
 }
 
 function convertTokenColorScopeForSublime(tokenColor: TokenColor): TokenColor {
+  if (tokenColor.scope == null || tokenColor.scope === '') {
+    return { ...tokenColor }
+  }
+
   return {
     ...tokenColor,
-    scope: Array.isArray(tokenColor.scope) ? tokenColor.scope.join(', ') : tokenColor.scope
+    scope: Array.isArray(tokenColor.scope)
+      ? tokenColor.scope.join(', ')
+      : tokenColor.scope
   }
 }
