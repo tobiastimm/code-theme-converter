@@ -233,3 +233,21 @@ export interface IdeaAttribute {
   }
   value?: IdeaColor | IdeaAttributeSettings
 }
+
+export interface IdeaTheme {
+  plugin: {
+    id: string
+    name: string
+    version: string
+    description: string
+    changelog: string
+  }
+  vendor: {
+    name: string
+    email: string
+    url: string
+  }
+  theme: {
+    name: string
+  }
+}
