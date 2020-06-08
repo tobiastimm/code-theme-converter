@@ -1,5 +1,5 @@
-import js2xmlparser from 'js2xmlparser'
-import { compose } from 'ramda'
+import { parse } from 'js2xmlparser'
+import { compose, prop, head, keys, converge, identity } from 'ramda'
 import {
   findEditorColor,
   CodeTheme,
@@ -14,7 +14,7 @@ import {
 import { removeHashFromHex } from '../util/color'
 
 interface MetaInfo {
-  created: Date
+  created: string
   ide: 'idea'
   ideVersion: '2019.1.0.0'
 }
@@ -43,13 +43,16 @@ function generateIdeaColorScheme (
   )
   const findTokenColorForFields = compose(
     removeHashFromHex,
+    // @ts-ignore
+    prop('foreground'),
+    prop('settings'),
     findTokenColorForScope(tokenColors)
   )
 
   return {
     name,
     metaInfo: {
-      created: new Date(),
+      created: new Date().toISOString(),
       ide: 'idea',
       ideVersion: '2019.1.0.0'
     },
@@ -733,37 +736,67 @@ function mapToXmlObject ({
       option: Object.keys(attributes).map(key => {
         const attribute = attributes[key as keyof typeof attributes]
         return {
-          ...toXmlAttributeAndValue(attributes)(key),
-          option:
-            typeof attribute?.value == 'string'
-              ? {
-                '@': {
-                  FOREGROUND: attribute.value
-                }
+          '@': {
+            name: key,
+            ...attribute?.attributes
+          },
+          ...(attribute?.value != null
+            ? {
+              value: {
+                option:
+                    typeof attribute?.value == 'string'
+                      ? {
+                        '@': {
+                          name: 'FOREGROUND',
+                          value: attribute.value
+                        }
+                      }
+                      : attribute?.value?.map(convertPropertyToXml)
               }
-              : attribute?.value?.map(option => ({
-                ...toXmlAttributeAndValue(option)
-              }))
+            }
+            : undefined)
         }
       })
     }
   }
 }
 
-function toXmlAttributeAndValue<V> (object: V) {
-  return function toAttributeAndValue (key: string) {
-    return {
-      '@': key,
-      '#': object[key as keyof typeof object]
+const toXmlAttributeWithValue = <V>(
+  key: string,
+  value: V
+): {
+  '@': {
+    name: string
+    value: V
+  }
+} => {
+  return {
+    '@': {
+      name: key,
+      value
     }
   }
 }
 
-export function convertToIdea (vscodeTheme: CodeTheme, version: string): void {
-  console.log(
-    js2xmlparser.parse(
-      'scheme',
-      mapToXmlObject(generateIdeaColorScheme(vscodeTheme, version))
-    )
+const headKey = compose(head, keys)
+
+const convertPropertyToXml = converge(toXmlAttributeWithValue, [
+  headKey,
+  converge(prop, [headKey, identity])
+])
+
+function toXmlAttributeAndValue<V> (object: V) {
+  return (key: string) => ({
+    '@': {
+      name: key
+    },
+    '#': object[key as keyof typeof object]
+  })
+}
+
+export function convertToIdea (vscodeTheme: CodeTheme, version: string): string {
+  return parse(
+    'scheme',
+    mapToXmlObject(generateIdeaColorScheme(vscodeTheme, version))
   )
 }

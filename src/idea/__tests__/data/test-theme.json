@@ -374,7 +374,6 @@
         "meta.tag.custom entity.name.tag"
       ],
       "settings": {
-        // "foreground": "#99a7e2"
         "foreground": "#267fb5"
       }
     },
@@ -672,7 +671,6 @@
         "punctuation.colon.graphql"
       ],
       "settings": {
-        // "foreground": "#737f9c"
         "foreground": "#F8F8F2A5"
       }
     },
