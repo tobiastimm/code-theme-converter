@@ -7,28 +7,29 @@ import {
   TokenColor
 } from '../util/vscode'
 
-export function convertToSublimeColorScheme(
+export function convertToSublimeColorScheme (
   vscodeTheme: CodeTheme,
   id?: string
 ): any {
   const { name, author = '', type, colors, tokenColors } = vscodeTheme
+
+  const findEditorColorForFields = findEditorColor(colors)
+
   const sublimePlist: PlistObject = {
     name: vscodeTheme.name,
     settings: [
       {
         settings: {
-          background: findEditorColor(colors, 'editor.background'),
-          caret: findEditorColor(
-            colors,
+          background: findEditorColorForFields(['editor.background']),
+          caret: findEditorColorForFields([
             'editorCursor.background',
             'editor.foreground'
-          ),
-          foreground: findEditorColor(colors, 'editor.foreground'),
-          lineHighlight: findEditorColor(
-            colors,
+          ]),
+          foreground: findEditorColorForFields(['editor.foreground']),
+          lineHighlight: findEditorColorForFields([
             'editor.lineHighlightBackground'
-          ),
-          selection: findEditorColor(colors, 'editor.selectionBackground')
+          ]),
+          selection: findEditorColorForFields(['editor.selectionBackground'])
         }
       },
       ...generateGitGutterConfig(colors),
@@ -46,62 +47,57 @@ export function convertToSublimeColorScheme(
 
 type GitGutterConfig = TokenColor[]
 
-function generateGitGutterConfig(colors: EditorColors): GitGutterConfig {
+function generateGitGutterConfig (colors: EditorColors): GitGutterConfig {
   return [
     {
       name: 'GitGutter deleted',
       scope: 'markup.deleted.git_gutter',
       settings: {
-        foreground: findEditorColor(
-          colors,
+        foreground: findEditorColor(colors)([
           'gitDecoration.deletedResourceForeground'
-        )
+        ])
       }
     },
     {
       name: 'GitGutter inserted',
       scope: 'markup.inserted.git_gutter',
       settings: {
-        foreground: findEditorColor(
-          colors,
+        foreground: findEditorColor(colors)([
           'gitDecoration.addedResourceForeground'
-        )
+        ])
       }
     },
     {
       name: 'GitGutter changed',
       scope: 'markup.changed.git_gutter',
       settings: {
-        foreground: findEditorColor(
-          colors,
+        foreground: findEditorColor(colors)([
           'gitDecoration.modifiedResourceForeground'
-        )
+        ])
       }
     },
     {
       name: 'GitGutter untracked',
       scope: 'markup.untracked.git_gutter',
       settings: {
-        foreground: findEditorColor(
-          colors,
+        foreground: findEditorColor(colors)([
           'gitDecoration.untrackedResourceForeground'
-        )
+        ])
       }
     },
     {
       name: 'GitGutter ignored',
       scope: 'markup.ignored.git_gutter',
       settings: {
-        foreground: findEditorColor(
-          colors,
+        foreground: findEditorColor(colors)([
           'gitDecoration.ignoredResourceForeground'
-        )
+        ])
       }
     }
   ]
 }
 
-function convertTokenColorScopeForSublime(tokenColor: TokenColor): TokenColor {
+function convertTokenColorScopeForSublime (tokenColor: TokenColor): TokenColor {
   if (tokenColor.scope == null || tokenColor.scope === '') {
     return { ...tokenColor }
   }

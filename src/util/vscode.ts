@@ -1,6 +1,7 @@
 import fs from 'fs-extra'
 import path from 'path'
 import json5 from 'json5'
+import { curryN } from 'ramda'
 
 export interface EditorColors {
   [key: string]: string
@@ -33,6 +34,7 @@ export interface CodeThemeEntry {
 
 export interface CodeThemePackage {
   name: string
+  author: string
   displayName: string
   description: string
   license: string
@@ -54,20 +56,27 @@ export interface CodeThemePackage {
   }
 }
 
-export function findEditorColor(
-  colors: EditorColors = {},
-  ...fieldNames: string[]
-): string {
-  for (const field of fieldNames) {
-    if (Object.prototype.hasOwnProperty.call(colors, field)) {
-      return colors[field]
+export const findEditorColor: (
+  colors: EditorColors
+) => (fieldNames: string[]) => string = curryN(
+  2,
+  function findEditorColorForField (
+    colors: EditorColors = {},
+    fieldNames: string[] = []
+  ) {
+    for (const field of fieldNames) {
+      if (Object.prototype.hasOwnProperty.call(colors, field)) {
+        return colors[field]
+      }
+      continue
     }
-    continue
+    return ''
   }
-  return ''
-}
+)
 
-export function findTokenColorForScope(
+export const findTokenColorForScope: (
+  tokenColors: TokenColor[]
+) => (scope: string) => string = curryN(2, function findTokenColorForScope (
   tokenColors: TokenColor[] = [],
   scope: string = ''
 ): TokenColor | null {
@@ -87,9 +96,9 @@ export function findTokenColorForScope(
     }
   }
   return null
-}
+})
 
-export async function readCodeTheme(
+export async function readCodeTheme (
   themeDir: string,
   theme: string
 ): Promise<CodeTheme> {
@@ -105,11 +114,11 @@ export async function readCodeTheme(
   })
 }
 
-export async function readCodeThemePackage(
+export async function readCodeThemePackage (
   dir: string
 ): Promise<CodeThemePackage> {
   return new Promise((resolve, reject) => {
-    fs.readFile(path.join(dir, 'package.json'), function(err, data) {
+    fs.readFile(path.join(dir, 'package.json'), function (err, data) {
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!err) {
         const packageJson: CodeThemePackage = JSON.parse(data.toString('utf8'))

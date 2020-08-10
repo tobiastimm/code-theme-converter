@@ -5,5 +5,6 @@ module.exports = {
     'ts-jest': {
       tsConfig: 'tsconfig.json'
     }
-  }
+  },
+  testPathIgnorePatterns: ['/node_modules', 'dist']
 }

@@ -46,7 +46,7 @@ if (repoUrl != '') {
     })
 }
 
-function cleanArgs(cmd: commander.Command): CommandOptions {
+function cleanArgs (cmd: commander.Command): CommandOptions {
   const args: CommandOptions = {}
   cmd.options.forEach((option: any) => {
     const key = option.long.replace(/^--/, '')

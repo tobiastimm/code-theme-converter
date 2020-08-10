@@ -39,9 +39,11 @@
     "download-git-repo": "^1.1.0",
     "execa": "^1.0.0",
     "fs-extra": "^8.1.0",
+    "js2xmlparser": "^4.0.1",
     "json5": "^2.1.0",
     "minimist": "^1.2.0",
     "plist": "^3.0.1",
+    "ramda": "^0.27.0",
     "rimraf": "^2.6.3",
     "slash": "^2.0.0",
     "uuid": "^3.3.2"
@@ -53,6 +55,7 @@
     "@types/mock-fs": "^4.10.0",
     "@types/node": "^13.11.1",
     "@types/plist": "^3.0.2",
+    "@types/ramda": "^0.27.3",
     "@types/rimraf": "^2.0.3",
     "@types/uuid": "^7.0.0",
     "@typescript-eslint/eslint-plugin": "2",
@@ -71,6 +74,7 @@
     "jest": "^25.1.0",
     "lint-staged": ">=10",
     "mock-fs": "^4.11.0",
+    "mockdate": "^3.0.2",
     "prettier": "^1.19.1",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.2"
