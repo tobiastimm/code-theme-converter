@@ -36,7 +36,7 @@ function generateIdeaColorScheme (
   vscodeTheme: CodeTheme,
   version: string
 ): IdeaColorScheme {
-  const { name, colors, tokenColors } = vscodeTheme
+  const { name, colors, tokenColors, type } = vscodeTheme
   const findEditorColorForFields = compose(
     removeHashFromHex,
     findEditorColor(colors)
@@ -51,6 +51,7 @@ function generateIdeaColorScheme (
 
   return {
     name,
+    parentScheme: type == 'dark' ? 'Darcula' : '',
     metaInfo: {
       created: new Date().toISOString(),
       ide: 'idea',

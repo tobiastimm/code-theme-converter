@@ -34,6 +34,7 @@ export interface CodeThemeEntry {
 
 export interface CodeThemePackage {
   name: string
+  author: string
   displayName: string
   description: string
   license: string

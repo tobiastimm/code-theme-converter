@@ -1,11 +1,7 @@
 import { parse } from 'js2xmlparser'
 import { IdeaTheme } from '../types/idea'
 
-module.exports = function createPluginXml ({
-  plugin,
-  vendor,
-  theme
-}: IdeaTheme) {
+export function createPluginXml ({ plugin, vendor, theme }: IdeaTheme): string {
   return parse('idea-plugin', {
     id: {
       '#': plugin.id

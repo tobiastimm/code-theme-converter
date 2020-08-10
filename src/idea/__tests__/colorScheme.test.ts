@@ -1,6 +1,7 @@
+import MockDate from 'mockdate'
 import { convertToIdea } from '../colorScheme'
 import mockTheme from './data/test-theme.json'
-import { CodeTheme } from 'src/util/vscode'
+import { CodeTheme } from '../../util/vscode'
 
 describe('colorScheme', () => {
   describe('convertToIdea', () => {
@@ -9,6 +10,8 @@ describe('colorScheme', () => {
     })
 
     it('should convert the theme', () => {
+      MockDate.set(1597066014849)
+
       expect(convertToIdea(mockTheme as CodeTheme, '1.0.0')).toMatchSnapshot()
     })
   })

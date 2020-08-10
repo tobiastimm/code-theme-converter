@@ -1,9 +1,9 @@
 import { CodeTheme, findEditorColor } from '../util/vscode'
 
-module.exports = function createEditorTheme (
+export function createEditorTheme (
   vscodeTheme: CodeTheme,
   fileName: string
-) {
+): any {
   const getColor = findEditorColor(vscodeTheme.colors)
   return {
     name: vscodeTheme.name,

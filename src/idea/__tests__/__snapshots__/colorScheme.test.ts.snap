@@ -2,9 +2,9 @@
 
 exports[`colorScheme convertToIdea should convert the theme 1`] = `
 "<?xml version='1.0'?>
-<scheme name='matter' version='1.0.0' parent_scheme='undefined'>
+<scheme name='matter' version='1.0.0' parent_scheme='Darcula'>
     <metaInfo>
-        <property name='created'>2020-06-08T12:21:23.657Z</property>
+        <property name='created'>2020-08-10T13:26:54.849Z</property>
         <property name='ide'>idea</property>
         <property name='ideVersion'>2019.1.0.0</property>
     </metaInfo>

@@ -3696,6 +3696,11 @@ mock-fs@^4.11.0:
   resolved "https://registry.yarnpkg.com/mock-fs/-/mock-fs-4.11.0.tgz#0828107e4b843a6ba855ecebfe3c6e073b69db92"
   integrity sha512-Yp4o3/ZA15wsXqJTT+R+9w2AYIkD1i80Lds47wDbuUhOvQvm+O2EfjFZSz0pMgZZSPHRhGxgcd2+GL4+jZMtdw==
 
+mockdate@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/mockdate/-/mockdate-3.0.2.tgz#a5a7bb5820da617747af424d7a4dcb22c6c03d79"
+  integrity sha512-ldfYSUW1ocqSHGTK6rrODUiqAFPGAg0xaHqYJ5tvj1hQyFsjuHpuWgWFTZWwDVlzougN/s2/mhDr8r5nY5xDpA==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"

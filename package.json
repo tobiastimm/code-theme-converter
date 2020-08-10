@@ -74,6 +74,7 @@
     "jest": "^25.1.0",
     "lint-staged": ">=10",
     "mock-fs": "^4.11.0",
+    "mockdate": "^3.0.2",
     "prettier": "^1.19.1",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.2"
