@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import rimraf from 'rimraf'
 
 import { fetchRepo } from '../fetchRepo'
-import { convertToSublimeColorScheme } from './colorScheme'
+import { toTmTheme } from './tmTheme'
 import { getSublimeTextPackageDir } from '../util/sublime'
 import { readCodeTheme } from '../util/vscode'
 import { createAdaptiveTheme } from './uiTheme'
@@ -51,7 +51,7 @@ export async function convertToSublime (
                 fs
                   .writeFile(
                     path.join(sublimeThemeDir, vscodeTheme.name + '.tmTheme'),
-                    convertToSublimeColorScheme(vscodeTheme)
+                    toTmTheme(vscodeTheme)
                   )
                   .catch(error => console.log(chalk.red(error)))
               )

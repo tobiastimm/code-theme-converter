@@ -1,10 +1,10 @@
-import { convertToSublimeColorScheme } from '../colorScheme'
+import { toTmTheme } from '../tmTheme'
 import { CodeTheme } from 'src/util/vscode'
 
 describe('colorScheme', () => {
-  describe('convertToSublimeColorScheme', () => {
+  describe('toTmTheme', () => {
     it('should be defined', () => {
-      expect(convertToSublimeColorScheme).toBeDefined()
+      expect(toTmTheme).toBeDefined()
     })
 
     it('should create sublime plist', () => {
@@ -79,12 +79,8 @@ describe('colorScheme', () => {
           }
         ]
       }
-      expect(
-        convertToSublimeColorScheme(
-          mockCodeTheme,
-          'c793f1b7-f404-4166-8768-472123631119'
-        )
-      ).toMatchInlineSnapshot(`
+      expect(toTmTheme(mockCodeTheme, 'c793f1b7-f404-4166-8768-472123631119'))
+        .toMatchInlineSnapshot(`
         "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
         <!DOCTYPE plist PUBLIC \\"-//Apple//DTD PLIST 1.0//EN\\" \\"http://www.apple.com/DTDs/PropertyList-1.0.dtd\\">
         <plist version=\\"1.0\\">

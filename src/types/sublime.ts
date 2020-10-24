@@ -215,3 +215,25 @@ export interface SublimeUITheme {
   }
   rules: SublimeUIRule[]
 }
+
+export interface SublimeColorSchemeRule {
+  name: string
+  scope: string
+  foreground?: string | string[]
+  background?: string
+  foreground_adjust?: string
+  selection_foreground?: string
+  font_style?: 'bold' | 'italic' | 'bold italic' | 0
+}
+
+export interface SublimeColorScheme {
+  name: string
+  author: string
+  variables: {
+    [key: string]: string
+  }
+  globals: {
+    [key: string]: string
+  }
+  rules: SublimeColorSchemeRule[]
+}
