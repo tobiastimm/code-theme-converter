@@ -4,11 +4,9 @@
 
 > Convert any vscode theme with ease!
 
-**This project is very WIP. If you wanna help, please reach out to me**
-
 I'm mainly working with Visual Studio Code nowadays and also created some themes. There are still some moments, where I prefer to work with other editors like Sublime Text or WebStorm. It bugs me that these editors don't have my vscode themes, so I've created this package to easily convert my themes.
 
-**Please use this as a starting point for your theme in Sublime or IDEA. 100% perfect conversion of every theme is kinda hard 😅**
+\*_Please use this as a starting point for your theme in Sublime or IDEA_
 
 ## To Do
 
@@ -16,8 +14,8 @@ I'm mainly working with Visual Studio Code nowadays and also created some themes
 
 - [x] Create Color Scheme
 - [x] Git Gutter etc.
-- [~] Tests
-- [ ] Create UI Theme
+- [x] Tests
+- [x] Create UI Theme
 - [ ] Convert specific syntax
 - [ ] CI
 - [ ] Docs
