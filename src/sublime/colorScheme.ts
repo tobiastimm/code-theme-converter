@@ -4,7 +4,8 @@ import {
   CodeTheme,
   findEditorColor,
   EditorColors,
-  TokenColor
+  TokenColor,
+  findTokenColorForScope
 } from '../util/vscode'
 
 export function convertToSublimeColorScheme (
@@ -20,6 +21,7 @@ export function convertToSublimeColorScheme (
     settings: [
       {
         settings: {
+          accent: findEditorColorForFields(['list.highlightForeground']),
           background: findEditorColorForFields(['editor.background']),
           caret: findEditorColorForFields([
             'editorCursor.background',
@@ -29,10 +31,17 @@ export function convertToSublimeColorScheme (
           lineHighlight: findEditorColorForFields([
             'editor.lineHighlightBackground'
           ]),
-          selection: findEditorColorForFields(['editor.selectionBackground'])
+          selection: findEditorColorForFields(['editor.selectionBackground']),
+          activeGuide: findEditorColorForFields([
+            'editorIndentGuide.background'
+          ]),
+          findHighlight: findEditorColorForFields([
+            'editor.findMatchHighlightBackground'
+          ]),
+          misspelling: findEditorColorForFields(['editorError.foreground'])
         }
       },
-      ...generateGitGutterConfig(colors),
+      ...generateGitGutterConfig(colors, tokenColors),
       ...tokenColors.map(convertTokenColorScopeForSublime)
     ] as PlistArray,
     uuid: id ?? uuid.v4(),
@@ -47,13 +56,17 @@ export function convertToSublimeColorScheme (
 
 type GitGutterConfig = TokenColor[]
 
-function generateGitGutterConfig (colors: EditorColors): GitGutterConfig {
+function generateGitGutterConfig (
+  colors: EditorColors,
+  tokenColors: TokenColor[]
+): GitGutterConfig {
+  const findEditorColorForFields = findEditorColor(colors)
   return [
     {
       name: 'GitGutter deleted',
       scope: 'markup.deleted.git_gutter',
       settings: {
-        foreground: findEditorColor(colors)([
+        foreground: findEditorColorForFields([
           'gitDecoration.deletedResourceForeground'
         ])
       }
@@ -62,7 +75,7 @@ function generateGitGutterConfig (colors: EditorColors): GitGutterConfig {
       name: 'GitGutter inserted',
       scope: 'markup.inserted.git_gutter',
       settings: {
-        foreground: findEditorColor(colors)([
+        foreground: findEditorColorForFields([
           'gitDecoration.addedResourceForeground'
         ])
       }
@@ -71,7 +84,7 @@ function generateGitGutterConfig (colors: EditorColors): GitGutterConfig {
       name: 'GitGutter changed',
       scope: 'markup.changed.git_gutter',
       settings: {
-        foreground: findEditorColor(colors)([
+        foreground: findEditorColorForFields([
           'gitDecoration.modifiedResourceForeground'
         ])
       }
@@ -80,7 +93,7 @@ function generateGitGutterConfig (colors: EditorColors): GitGutterConfig {
       name: 'GitGutter untracked',
       scope: 'markup.untracked.git_gutter',
       settings: {
-        foreground: findEditorColor(colors)([
+        foreground: findEditorColorForFields([
           'gitDecoration.untrackedResourceForeground'
         ])
       }
@@ -89,9 +102,18 @@ function generateGitGutterConfig (colors: EditorColors): GitGutterConfig {
       name: 'GitGutter ignored',
       scope: 'markup.ignored.git_gutter',
       settings: {
-        foreground: findEditorColor(colors)([
+        foreground: findEditorColorForFields([
           'gitDecoration.ignoredResourceForeground'
         ])
+      }
+    },
+    {
+      name: 'GitGutter comment',
+      scope: 'comment.line.annotation.git_gutter',
+      settings: {
+        foreground: findTokenColorForScope(tokenColors)(
+          'comment, punctuation.definition.comment'
+        )
       }
     }
   ]

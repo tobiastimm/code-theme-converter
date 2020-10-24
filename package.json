@@ -33,6 +33,7 @@
   "author": "Tobias Timm <tbs.timm@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@xstate/fsm": "^1.5.0",
     "chalk": "^2.4.2",
     "cmd-shim": "^2.0.2",
     "commander": "^5.0.0",

@@ -1,0 +1,24 @@
+{
+  "variables":
+  {
+    "font_face": "system",
+    "font_size_sm": 11,
+    "font_size": 12,
+    "font_size_lg": 13,
+  },
+  "rules":
+  [
+    {
+      "class": "title_bar",
+      "fg": ["background", {{ titleBar.activeForeground }}],
+      "bg": ["background", {{{ titleBar.activeBackground }}}],
+      "style": "system"
+    },
+    {
+      "class": "title_bar",
+      "attributes": ["file_dark"],
+      "bg": ["background", {{{ titleBar.activeBackground }}}],
+      "style": "dark"
+    },
+  ]
+}

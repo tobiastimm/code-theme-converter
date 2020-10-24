@@ -7,6 +7,7 @@ import { fetchRepo } from '../fetchRepo'
 import { convertToSublimeColorScheme } from './colorScheme'
 import { getSublimeTextPackageDir } from '../util/sublime'
 import { readCodeTheme } from '../util/vscode'
+import { createAdaptiveTheme } from './uiTheme'
 
 export async function convertToSublime (
   vscodeThemeRepoUrl: string,
@@ -53,6 +54,15 @@ export async function convertToSublime (
                     convertToSublimeColorScheme(vscodeTheme)
                   )
                   .catch(error => console.log(chalk.red(error)))
+              )
+              promises.push(
+                fs.writeFile(
+                  path.join(
+                    sublimeThemeDir,
+                    vscodeTheme.name + '.sublime-theme'
+                  ),
+                  JSON.stringify(createAdaptiveTheme(vscodeTheme), undefined, 2)
+                )
               )
             })
             .catch(error => console.log(chalk.red(error)))

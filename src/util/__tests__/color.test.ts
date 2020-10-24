@@ -13,7 +13,7 @@ describe('util/color', () => {
       ${'#ff'}       | ${[255]}
       ${'#ffff'}     | ${[255, 255]}
       ${'#ffffffff'} | ${[255, 255, 255, 255]}
-      ${''}          | ${undefined}
+      ${''}          | ${[0, 0, 0]}
       ${'234235'}    | ${[52, 35]}
     `('should convert a hex string to an RGB array', ({ hex, result }) => {
       expect(hex2Rgb(hex)).toEqual(result)

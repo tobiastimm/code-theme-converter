@@ -58,11 +58,11 @@ export interface CodeThemePackage {
 
 export const findEditorColor: (
   colors: EditorColors
-) => (fieldNames: string[]) => string = curryN(
+) => (fieldNames: readonly string[]) => string = curryN(
   2,
   function findEditorColorForField (
     colors: EditorColors = {},
-    fieldNames: string[] = []
+    fieldNames: readonly string[] = []
   ) {
     for (const field of fieldNames) {
       if (Object.prototype.hasOwnProperty.call(colors, field)) {
