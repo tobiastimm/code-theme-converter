@@ -96,6 +96,8 @@ describe('colorScheme', () => {
               <dict>
                 <key>settings</key>
                 <dict>
+                  <key>accent</key>
+                  <string/>
                   <key>background</key>
                   <string>#171D2B</string>
                   <key>caret</key>
@@ -106,6 +108,12 @@ describe('colorScheme', () => {
                   <string>#67769630</string>
                   <key>selection</key>
                   <string>#67769660</string>
+                  <key>activeGuide</key>
+                  <string/>
+                  <key>findHighlight</key>
+                  <string/>
+                  <key>misspelling</key>
+                  <string/>
                 </dict>
               </dict>
               <dict>
@@ -161,6 +169,27 @@ describe('colorScheme', () => {
                 <dict>
                   <key>foreground</key>
                   <string>#6F7899</string>
+                </dict>
+              </dict>
+              <dict>
+                <key>name</key>
+                <string>GitGutter comment</string>
+                <key>scope</key>
+                <string>comment.line.annotation.git_gutter</string>
+                <key>settings</key>
+                <dict>
+                  <key>foreground</key>
+                  <dict>
+                    <key>settings</key>
+                    <dict>
+                      <key>foreground</key>
+                      <string>#6F7899</string>
+                    </dict>
+                    <key>name</key>
+                    <string>Comments</string>
+                    <key>scope</key>
+                    <string>comment, punctuation.definition.comment</string>
+                  </dict>
                 </dict>
               </dict>
               <dict>

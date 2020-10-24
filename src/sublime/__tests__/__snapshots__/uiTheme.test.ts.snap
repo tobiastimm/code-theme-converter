@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`uiTheme createAdaptiveTheme should create an adaptive theme 1`] = `
+Object {
+  "extends": "Adaptive.sublime-theme",
+  "rules": Array [
+    Object {
+      "class": "title_bar",
+      "fg": "#9da5b4",
+    },
+    Object {
+      "class": "sidebar_container",
+      "layer0.tint": "#0c0e13",
+    },
+    Object {
+      "class": "status_bar",
+      "layer0.tint": "#0c0e13",
+    },
+    Object {
+      "class": "label_control",
+      "fg": "#64727f",
+      "parents": Array [
+        Object {
+          "class": "status_bar",
+        },
+      ],
+    },
+    Object {
+      "attributes": Array [
+        "selectable",
+        "hover",
+      ],
+      "class": "tree_row",
+      "layer0.opacity": 1,
+      "layer0.tint": "#67769635",
+    },
+    Object {
+      "attributes": Array [
+        "selected",
+      ],
+      "class": "tree_row",
+      "layer0.opacity": 1,
+      "layer0.tint": "#67769640",
+    },
+    Object {
+      "class": "sidebar_heading",
+      "fg": "#c0c5cd",
+    },
+    Object {
+      "class": "sidebar_label",
+      "fg": "#7E8C99",
+    },
+    Object {
+      "class": "sidebar_label",
+      "fg": "#dfe1e8",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "selected",
+          ],
+          "class": "tree_row",
+        },
+      ],
+    },
+    Object {
+      "class": "vcs_status_badge",
+      "layer0.tint": "#8892a0",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "untracked",
+          ],
+          "class": "file_system_entry",
+        },
+      ],
+    },
+    Object {
+      "class": "vcs_status_badge",
+      "layer0.tint": "#7a9bc2",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "modified",
+          ],
+          "class": "file_system_entry",
+        },
+      ],
+    },
+    Object {
+      "class": "vcs_status_badge",
+      "layer0.tint": "#516a88",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "missing",
+          ],
+          "class": "file_system_entry",
+        },
+      ],
+    },
+    Object {
+      "class": "vcs_status_badge",
+      "layer0.tint": "#267fb5",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "staged",
+          ],
+          "class": "file_system_entry",
+        },
+      ],
+    },
+    Object {
+      "class": "vcs_status_badge",
+      "layer0.tint": "#267fb5",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "added",
+          ],
+          "class": "file_system_entry",
+        },
+      ],
+    },
+    Object {
+      "class": "vcs_status_badge",
+      "layer0.tint": "#516a88",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "deleted",
+          ],
+          "class": "file_system_entry",
+        },
+      ],
+    },
+    Object {
+      "class": "sidebar_label",
+      "color": "#64727f",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "ignored",
+          ],
+          "class": "file_system_entry",
+        },
+      ],
+    },
+    Object {
+      "attributes": Array [
+        "selected",
+      ],
+      "class": "tab_control",
+      "tint_modifier": "#14191f",
+    },
+    Object {
+      "attributes": Array [
+        "dirty",
+      ],
+      "class": "tab_control",
+      "layer2.tint": "#267fb5",
+      "settings": Array [
+        "highlight_modified_tabs",
+      ],
+    },
+    Object {
+      "class": "tab_label",
+      "fg": "#7E8C99",
+    },
+    Object {
+      "class": "tab_label",
+      "fg": "#dfe1e8",
+      "parents": Array [
+        Object {
+          "attributes": Array [
+            "selected",
+          ],
+          "class": "tab_control",
+        },
+      ],
+    },
+  ],
+  "variables": Object {
+    "font_face": "system",
+    "font_size": 12,
+    "font_size_lg": 13,
+    "font_size_sm": 11,
+  },
+}
+`;
