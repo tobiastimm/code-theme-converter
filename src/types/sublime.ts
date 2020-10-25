@@ -217,8 +217,8 @@ export interface SublimeUITheme {
 }
 
 export interface SublimeColorSchemeRule {
-  name: string
-  scope: string
+  name?: string
+  scope?: string
   foreground?: string | string[]
   background?: string
   foreground_adjust?: string
