@@ -6,28 +6,7 @@
 
 I'm mainly working with Visual Studio Code nowadays and also created some themes. There are still some moments, where I prefer to work with other editors like Sublime Text or WebStorm. It bugs me that these editors don't have my vscode themes, so I've created this package to easily convert my themes.
 
-\*_Please use this as a starting point for your theme in Sublime or IDEA_
-
-## To Do
-
-### code2subl
-
-- [x] Create Color Scheme
-- [x] Git Gutter etc.
-- [x] Tests
-- [x] Create UI Theme
-- [ ] Convert specific syntax
-- [ ] CI
-- [ ] Docs
-
-### code2idea
-
-- [ ] Create Color Scheme
-- [ ] Create UI Theme
-- [ ] Convert specific syntax
-- [ ] Tests
-- [ ] CI
-- [ ] Docs
+\*_Please use this as a starting point for your theme in Sublime Text 3 or IDEA_
 
 ## Install
 
@@ -55,6 +34,7 @@ code2subl <repo> [options]
 
 - `-S`, `--save`: Install theme into Sublime Text (default: false)
 - `-d`, `--directory`: Overwrite directory containing the themes (default: "themes")
+- `-T`, `--as-tm-theme`: Convert to `.tmTheme` instead of `.sublime-color-scheme` (default: false)
 - `-V`, `--version`: Output the version number
 - `-h`, `--help`: Output usage information
 
@@ -64,7 +44,7 @@ code2subl <repo> [options]
 code2subl https://github.com/tobiastimm/raiju.git
 ```
 
-### code2idea (Not working atm)
+### code2idea (Converted theme not working atm!)
 
 ```sh
 code2idea <repo> [options]
