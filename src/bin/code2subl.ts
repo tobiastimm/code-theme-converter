@@ -11,6 +11,11 @@ program
   .description('Converts a vscode-theme into the sublime-text theme syntax')
   .option('-S, --save', 'Install theme into Sublime Text', false)
   .option(
+    '-T, --as-tm-theme',
+    'Convert to .tmTheme instead of .sublime-color-scheme',
+    false
+  )
+  .option(
     '-d, --directory [name]',
     'Overwrite directory containing the themes',
     'themes'

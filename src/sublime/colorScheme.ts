@@ -1,133 +1,113 @@
-import plist, { PlistObject, PlistArray } from 'plist'
-import uuid from 'uuid'
-import {
-  CodeTheme,
-  findEditorColor,
-  EditorColors,
-  TokenColor,
-  findTokenColorForScope
-} from '../util/vscode'
+import { SublimeColorScheme, SublimeColorSchemeRule } from '../types/sublime'
+import { CodeTheme, findEditorColor, TokenColor } from '../util/vscode'
 
-export function convertToSublimeColorScheme (
-  vscodeTheme: CodeTheme,
-  id?: string
-): any {
-  const { name, author = '', type, colors, tokenColors } = vscodeTheme
-
-  const findEditorColorForFields = findEditorColor(colors)
-
-  const sublimePlist: PlistObject = {
-    name: vscodeTheme.name,
-    settings: [
-      {
-        settings: {
-          accent: findEditorColorForFields(['list.highlightForeground']),
-          background: findEditorColorForFields(['editor.background']),
-          caret: findEditorColorForFields([
-            'editorCursor.background',
-            'editor.foreground'
-          ]),
-          foreground: findEditorColorForFields(['editor.foreground']),
-          lineHighlight: findEditorColorForFields([
-            'editor.lineHighlightBackground'
-          ]),
-          selection: findEditorColorForFields(['editor.selectionBackground']),
-          activeGuide: findEditorColorForFields([
-            'editorIndentGuide.background'
-          ]),
-          findHighlight: findEditorColorForFields([
-            'editor.findMatchHighlightBackground'
-          ]),
-          misspelling: findEditorColorForFields(['editorError.foreground'])
-        }
-      },
-      ...generateGitGutterConfig(colors, tokenColors),
-      ...tokenColors.map(convertTokenColorScopeForSublime)
-    ] as PlistArray,
-    uuid: id ?? uuid.v4(),
-    colorSpaceName: 'sRGB',
-    semanticClass: `theme.${type}.${name.replace(/\s+/g, '-').toLowerCase()}`,
-    author,
-    comment: ''
-  }
-
-  return plist.build(sublimePlist)
-}
-
-type GitGutterConfig = TokenColor[]
-
-function generateGitGutterConfig (
-  colors: EditorColors,
-  tokenColors: TokenColor[]
-): GitGutterConfig {
-  const findEditorColorForFields = findEditorColor(colors)
-  return [
-    {
-      name: 'GitGutter deleted',
-      scope: 'markup.deleted.git_gutter',
-      settings: {
-        foreground: findEditorColorForFields([
-          'gitDecoration.deletedResourceForeground'
-        ])
-      }
-    },
-    {
-      name: 'GitGutter inserted',
-      scope: 'markup.inserted.git_gutter',
-      settings: {
-        foreground: findEditorColorForFields([
-          'gitDecoration.addedResourceForeground'
-        ])
-      }
-    },
-    {
-      name: 'GitGutter changed',
-      scope: 'markup.changed.git_gutter',
-      settings: {
-        foreground: findEditorColorForFields([
-          'gitDecoration.modifiedResourceForeground'
-        ])
-      }
-    },
-    {
-      name: 'GitGutter untracked',
-      scope: 'markup.untracked.git_gutter',
-      settings: {
-        foreground: findEditorColorForFields([
-          'gitDecoration.untrackedResourceForeground'
-        ])
-      }
-    },
-    {
-      name: 'GitGutter ignored',
-      scope: 'markup.ignored.git_gutter',
-      settings: {
-        foreground: findEditorColorForFields([
-          'gitDecoration.ignoredResourceForeground'
-        ])
-      }
-    },
-    {
-      name: 'GitGutter comment',
-      scope: 'comment.line.annotation.git_gutter',
-      settings: {
-        foreground: findTokenColorForScope(tokenColors)(
-          'comment, punctuation.definition.comment'
-        )
-      }
+function fromTokenColorToSublimeRule (
+  tokenColor: TokenColor
+): SublimeColorSchemeRule {
+  const mapFontStyle = (
+    fontStyle: 'italic' | 'normal' | 'bold' | 'bold italic' | undefined
+  ): 'bold' | 'italic' | 'bold italic' | 0 => {
+    switch (fontStyle) {
+      case undefined:
+      case 'normal':
+        return 0
+      default:
+        return fontStyle
     }
-  ]
-}
-
-function convertTokenColorScopeForSublime (tokenColor: TokenColor): TokenColor {
-  if (tokenColor.scope == null || tokenColor.scope === '') {
-    return { ...tokenColor }
   }
 
   return {
-    ...tokenColor,
+    name: tokenColor.name,
+    foreground: tokenColor.settings?.foreground,
+    background: tokenColor.settings?.background,
+    font_style: mapFontStyle(tokenColor.settings?.fontStyle),
     scope: Array.isArray(tokenColor.scope)
       ? tokenColor.scope.join(', ')
       : tokenColor.scope
+  }
+}
+
+export function toSublimeColorScheme (
+  vscodeTheme: CodeTheme
+): SublimeColorScheme {
+  const { name, author = '', colors, tokenColors } = vscodeTheme
+
+  const findEditorColorForField = findEditorColor(colors)
+
+  return {
+    name,
+    author,
+    globals: {
+      background: findEditorColorForField(['editor.background']),
+      foreground: findEditorColorForField(['editor.foreground']),
+      caret: findEditorColorForField([
+        'editorCursor.background',
+        'editor.foreground'
+      ]),
+      block_caret: findEditorColorForField([
+        'editorCursor.background',
+        'editor.foreground'
+      ]),
+      line_highlight: findEditorColorForField([
+        'editor.lineHighlightBackground'
+      ]),
+      misspelling: findEditorColorForField(['editorError.foreground']),
+      fold_marker: findEditorColorForField(['list.highlightForeground']),
+      accent: findEditorColorForField(['list.highlightForeground']),
+      gutter: findEditorColorForField(['editorGutter.background']),
+      gutter_foreground: findEditorColorForField([
+        'editorLineNumber.foreground'
+      ]),
+      line_diff_added: findEditorColorForField([
+        'diffEditor.insertedTextBackground',
+        'gitDecoration.addedResourceForeground'
+      ]),
+      line_diff_modified: findEditorColorForField([
+        'diffEditor.modifiedTextBackground',
+        'gitDecoration.modifiedResourceForeground'
+      ]),
+      line_diff_deleted: findEditorColorForField([
+        'diffEditor.removedTextBackground',
+        'gitDecoration.deletedResourceForeground'
+      ]),
+      selection: findEditorColorForField(['editor.selectionBackground']),
+      inactive_selection: findEditorColorForField([
+        'list.inactiveSelectionBackground'
+      ]),
+      inactive_selection_foreground: findEditorColorForField([
+        'list.inactiveSelectionForeground'
+      ]),
+      highlight: findEditorColorForField([
+        'editor.findMatchHighlightBackground',
+        'peekViewEditor.matchHighlightBorder'
+      ]),
+      find_highlight: findEditorColorForField([
+        'editor.findMatchHighlightBackground',
+        'peekViewEditor.matchHighlightBorder'
+      ]),
+      find_highlight_foreground: findEditorColorForField([
+        'list.highlightForeground'
+      ]),
+      guide: findEditorColorForField(['editorIndentGuide.background']),
+      active_guide: findEditorColorForField(['list.activeSelectionBackground']),
+      stack_guide: findEditorColorForField([
+        'list.inactiveSelectionForeground'
+      ]),
+      brackets_foreground: findEditorColorForField(['selection.background']),
+      tags_foreground: findEditorColorForField(['selection.background']),
+      shadow: findEditorColorForField(['widget.shadow', 'scrollbar.shadow'])
+    },
+    variables: {
+      black: findEditorColorForField(['terminal.ansiBlack']),
+      white: findEditorColorForField(['terminal.ansiWhite']),
+      red: findEditorColorForField(['terminal.ansiRed']),
+      green: findEditorColorForField(['terminal.ansiGreen']),
+      yellow: findEditorColorForField(['terminal.ansiYellow']),
+      orange: findEditorColorForField(['terminal.ansiYellow']),
+      blue: findEditorColorForField(['terminal.ansiBlue']),
+      magenta: findEditorColorForField(['terminal.ansiMagenta']),
+      cyan: findEditorColorForField(['terminal.ansiCyan'])
+    },
+    rules: tokenColors.map(fromTokenColorToSublimeRule)
   }
 }
