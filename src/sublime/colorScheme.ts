@@ -89,10 +89,10 @@ export function toSublimeColorScheme (
         'list.highlightForeground'
       ]),
       guide: findEditorColorForField(['editorIndentGuide.background']),
-      active_guide: findEditorColorForField(['list.activeSelectionBackground']),
-      stack_guide: findEditorColorForField([
-        'list.inactiveSelectionForeground'
+      active_guide: findEditorColorForField([
+        'breadcrumb.activeSelectionForeground'
       ]),
+      stack_guide: findEditorColorForField(['breadcrumb.foreground']),
       brackets_foreground: findEditorColorForField(['selection.background']),
       tags_foreground: findEditorColorForField(['selection.background']),
       shadow: findEditorColorForField(['widget.shadow', 'scrollbar.shadow'])
