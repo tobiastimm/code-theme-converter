@@ -1,6 +1,6 @@
 {
   "name": "code-theme-converter",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Convert any vscode theme with ease!",
   "bin": {
     "code2subl": "bin/code2subl.js",
