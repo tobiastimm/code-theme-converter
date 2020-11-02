@@ -39,7 +39,7 @@ if (repoUrl != '') {
       )
     })
     .catch(err => {
-      console.error(chalk.red(err))
+      console.trace(chalk.red(err), err)
     })
 }
 

@@ -83,7 +83,7 @@ export const findTokenColorForScope: (
   for (const token of tokenColors) {
     const tokenScope = token.scope
     let isDefined = false
-    if (typeof tokenScope === 'string') {
+    if (typeof tokenScope === 'string' && tokenScope != '') {
       isDefined = tokenScope.includes(scope)
     } else if (Array.isArray(tokenScope)) {
       isDefined =

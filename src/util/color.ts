@@ -30,7 +30,7 @@ export function getAlphaFromHex (hex: string): number | undefined {
   return hex2Rgba(hex).pop()
 }
 
-export function removeHashFromHex (hex: string): string {
+export function removeHashFromHex (hex: string = ''): string {
   return hex.includes('#') ? hex.substr(1) : hex
 }
 

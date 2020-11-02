@@ -85,18 +85,18 @@ export async function convertToIdea (
                     }
                   })
                 )
-                .catch(error => console.log(chalk.red(error)))
+                .catch(error => console.trace(chalk.red(error)))
               await fs.writeFile(
                 path.join(themesDir, themeName + '.xml'),
                 colorScheme
               )
             })
-            .catch(error => console.log(chalk.red(error)))
+            .catch(error => console.trace(chalk.red(error)))
         })
-        .catch(error => console.log(chalk.red(error)))
+        .catch(error => console.trace(chalk.red(error)))
     })
     return Promise.all(promises)
   } catch (error) {
-    console.log(chalk.red(error))
+    console.trace(chalk.red(error))
   }
 }
