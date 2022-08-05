@@ -86,5 +86,7 @@ export async function convertToSublime (
     return Promise.all(promises)
   } catch (error) {
     console.log(chalk.red(error))
+    if(error.includes('checkout')
+       console.log(chalk.red('You may need to add the branch name explicitly to the end of your URL (eg "#main")'))
   }
 }
