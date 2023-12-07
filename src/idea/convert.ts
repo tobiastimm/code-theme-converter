@@ -98,5 +98,7 @@ export async function convertToIdea (
     return Promise.all(promises)
   } catch (error) {
     console.trace(chalk.red(error))
+    if(error.includes('checkout')
+      console.log(chalk.red('You may need to add the branch name explicitly to the end of your URL (eg "#main")'))
   }
 }
