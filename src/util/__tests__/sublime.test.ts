@@ -1,4 +1,5 @@
 import os from 'os'
+import fs from 'fs'
 import { getSublimeTextPackageDir } from '../sublime'
 
 describe('util/sublime', () => {
@@ -29,9 +30,12 @@ describe('util/sublime', () => {
             shell: ''
           }))
 
+        const dirSpy = jest.spyOn(fs, 'existsSync').mockReturnValueOnce(true)
+
         expect(getSublimeTextPackageDir()).toEqual(result)
         expect(osSpy).toHaveBeenCalled()
         expect(usernameSpy).toHaveBeenCalled()
+        expect(dirSpy).toHaveBeenCalled()
       }
     )
   })
