@@ -7,7 +7,7 @@ export interface ConverterRepo {
   repo: string
 }
 
-export async function fetchRepo(url: string): Promise<ConverterRepo> {
+export async function fetchRepo (url: string): Promise<ConverterRepo> {
   const tmpRootDir = await createTempDir()
   const tmpRepoDir = path.join(tmpRootDir, 'repo')
 
